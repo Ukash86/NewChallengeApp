@@ -1,24 +1,14 @@
-﻿string name = "Lukasz";
-char sex = 'M';
-int age = 33;
+﻿int number = 993692331;
+char[] numbers = number.ToString().ToArray();
+string digits = "0123456789";
 
-if (sex != 'M')
+foreach (var digit in digits)
 {
-    Console.WriteLine("to jest kobieta");
-}
-else if (sex == 'M')
-{
-    Console.WriteLine("to jest mężczyzna");
-    if (name == "Lukasz")
+    var times = 0;
+    foreach (var numberInNumbers in numbers)
     {
-        Console.WriteLine("to jest mężczyzna o imieniu " + name);
-        if (age == 33)
-        {
-            Console.WriteLine("to jest mężczyzna o imieniu " + name + " który ma " + age + " lat.");
-        }
+        if (numberInNumbers == digit)
+            times++;
     }
-}
-else
-{
-    Console.WriteLine("nie wiadomo kto to");
+    Console.WriteLine(digit + " => " + times);
 }
