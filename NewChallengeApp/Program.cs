@@ -1,32 +1,16 @@
-﻿long numbers = 7666689993322173223;
-char[] chars = numbers.ToString().ToCharArray();
-string digits = "0123456789";
+﻿long numbers = 7647565839368881884;
+string digits = "012356789";
 
-Console.WriteLine("Wynik dla liczby 7666689993322173223");
+Console.WriteLine("Wynik dla liczby 7647565839368881884:");
 Console.WriteLine();
 
 foreach (char digit in digits)
 {
-    var times = 0;
-        foreach (var number in chars)
+    var count = 0;
+    foreach (var number in numbers.ToString())
+    if(number == digit)
     {
-        if (number == digit)
-            times++;
+        count++;
     }
-    Console.WriteLine(digit + " => " + times);
+    Console.WriteLine(digit + " => " + count);
 }
-
-//int number = 993692331;
-//char[] numbers = number.ToString().ToArray();
-//string digits = "0123456789";
-
-//foreach (var digit in digits)
-//{
-//    var times = 0;
-//    foreach (var numberinnumbers in numbers)
-//    {
-//        if (numberinnumbers == digit)
-//            times++;
-//    }
-//    Console.WriteLine(digit + " => " + times);
-//}
