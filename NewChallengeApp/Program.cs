@@ -1,16 +1,11 @@
-﻿long numbers = 7647565839368881884;
-string digits = "012356789";
+﻿using NewChallengeApp;
+User user1 = new User("Lukasz", "qwerty");
+User user2 = new User("Daria", "qwerty");
+User user3 = new User("Kacper", "qwerty");
+User user4 = new User("Dawid", "qwerty");
 
-Console.WriteLine("Wynik dla liczby 7647565839368881884:");
-Console.WriteLine();
-
-foreach (char digit in digits)
-{
-    var count = 0;
-    foreach (var number in numbers.ToString())
-    if(number == digit)
-    {
-        count++;
-    }
-    Console.WriteLine(digit + " => " + count);
-}
+user1.AddScore(5);
+user1.AddScore(5);
+user1.AddScore(5);
+var result = user1.Result;
+Console.WriteLine(result);
