@@ -1,44 +1,80 @@
-﻿Employee employee1 = new Employee("Karol ", "Sikora ", 24, new int[] { 1, 2, 3, 4, 5 });
-Employee employee2 = new Employee("Damian ", "Wągrowski ", 35, new int[] { 8, 3, 2, 5, 4 });
-Employee employee3 = new Employee("Paweł ", "Chobot ", 44, new int[] { 3, 6, 2, 7, 3 });
+﻿using NewChallengeApp;
 
-var result1 = employee1.Ratings.Sum();
-var result2 = employee2.Ratings.Sum();
-var result3 = employee3.Ratings.Sum();
-int[] results = { result1, result2, result3 };
-int max = 0;
+Console.WriteLine("Welcome to the 'BEST WORKER' employee evaluation program.");
+Console.WriteLine();
+Console.WriteLine("=========================================================");
+Console.WriteLine();
+Console.WriteLine("WORKER RATINGS:");
+Console.WriteLine();
+Console.WriteLine("A - salary increase and chance for advancement");
+Console.WriteLine("B - solary increase");
+Console.WriteLine("C - standard worker");
+Console.WriteLine("D - weak worker without bonus");
+Console.WriteLine("E - employee to fired");
+Console.WriteLine();
+Console.WriteLine("=========================================================");
 
-foreach (int bestResult in results)
+var employee = new Employee("Karol", "Sikora");
+
+while (true)
 {
-    if (bestResult > max)
+    Console.WriteLine("Add employee rating: ");
+    var input = Console.ReadLine();
+    if(input == "q")
     {
-        max = bestResult;
+        break;
+    }
+    try
+    {
+        employee.AddGrade(input);
+    }
+    catch(Exception e)
+    {
+        Console.WriteLine("Exception catched: " + e.Message);
     }
 }
+var statistics = employee.GetStatistics();
 
-max = result1;
-Employee bestWorker = employee1;
+Console.WriteLine();
+Console.WriteLine($"Number of correct ratings: {statistics.QuantityOfGrades}");
+Console.WriteLine($"Average:                   {statistics.Average:N2}");
+Console.WriteLine($"Min:                       {statistics.Min}");
+Console.WriteLine($"Max:                       {statistics.Max}");
+Console.WriteLine($"Your Letter Rating:        {statistics.AverageLetter}");
 
-if (max < result2)
-{
 
-    bestWorker = employee2;
-}
-else if (max < result3)
-{
-    bestWorker = employee3;
-}
+//Employee employee1 = new Employee("Karol ", "Sikora ", 24, new int[] { 9, 1, 3, 8, 5, });
+//Employee employee2 = new Employee("Damian ", "Wągrowski ", 35, new int[] { 9, 3, 2, 5, 4 });
+//Employee employee3 = new Employee("Paweł ", "Chobot ", 44, new int[] { 8, 6, 8, 7, 4 });
 
-int sumOfRatings = 0;
+//var result1 = employee1.Ratings.Sum();
+//var result2 = employee2.Ratings.Sum();
+//var result3 = employee3.Ratings.Sum();
+//int[] results = { result1, result2, result3 };
+//int max = 0;
 
-foreach (int rating in bestWorker.Ratings)
-{
-    sumOfRatings += rating;
-}
+//foreach (int bestResult in results)
+//{
+//    if (bestResult > max)
+//    {
+//        max = bestResult;
+//    }
+//}
 
-Console.WriteLine("The best worker:");
-Console.WriteLine("name               -  " + bestWorker.Name);
-Console.WriteLine("surname            -  " + bestWorker.Surname);
-Console.WriteLine("age                -  " + bestWorker.Age);
-Console.WriteLine("number of ratings  -  " + bestWorker.Ratings.Length);
-Console.WriteLine("sum of ratings     -  " + max);
+//Employee bestWorker = employee1;
+
+//if (max == result2)
+//{
+//    bestWorker = employee2;
+//}
+//else if (max == result3)
+//{
+//    bestWorker = employee3;
+//}
+
+//Console.WriteLine("The best worker:");
+//Console.WriteLine("name               -  " + bestWorker.Name);
+//Console.WriteLine("surname            -  " + bestWorker.Surname);
+//Console.WriteLine("age                -  " + bestWorker.Age);
+//Console.WriteLine("number of ratings  -  " + bestWorker.Ratings.Length);
+//Console.WriteLine("sum of ratings     -  " + max);
