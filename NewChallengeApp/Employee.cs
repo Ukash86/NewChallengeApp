@@ -3,16 +3,24 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace NewChallengeApp
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public Employee(string name, string surname)
+        public Employee(string name, string surname, char sex, int age)
+            : base(name, surname, sex, age)
         {
-            this.Name = name;
-            this.Surname = surname;
+
         }
-        public string Name { get; private set; }
-        public string Surname { get; private set; }
+        public Employee(string name, string surname, char sex)
+            : base(name, surname, sex)
+        {
+
+        }
+        public Employee(string name, string surname)
+            : base(name, surname)
+        {
+
+        }
         public void AddGrade(float grade) 
         {
             if (grade >= 0 && grade <= 100)
@@ -61,7 +69,7 @@ namespace NewChallengeApp
                     this.grades.Add(20);
                     break;
                 default:
-                    throw new Exception(addGrade + " - wrong letter");
+                    throw new Exception(addGrade + " - wrong rating letter!!!");
             }
         }
         public void AddGrade(string grade)
